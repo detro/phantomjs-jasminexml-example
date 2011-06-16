@@ -15,7 +15,7 @@ if ( phantom.args.length !== 2 ) {
         if (status === "success") {
             waitFor(function() { // wait for this to be true
                 return page.evaluate(function() {
-                    return document.getElementById("testFinished") !== null ? true : false;
+                    return document.getElementById("testsPassed") !== null ? true : document.getElementById("testsFailed") !== null ? true : false;
                 });
             }, function() { // once done...
                 // Retrieve the result of the tests
@@ -38,7 +38,10 @@ if ( phantom.args.length !== 2 ) {
                     phantom.writeToFile(resultdir + '/' + suitesResults[i].filename, suitesResults[i].xmlbody);
                 }
                 
-                phantom.exit(0);
+                // Return the correct exit status. '0' only if all the tests passed
+                phantom.exit(page.evaluate(function(){
+                    return document.getElementById("testsPassed") !== null ? 0 : 1; //< exit(0) is success, exit(1) is failure
+                }));
             }, function() { // or, once it timesout...
                 phantom.exit(1);
             });
