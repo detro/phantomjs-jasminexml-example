@@ -1,4 +1,4 @@
-describe("Test tv.js", function(){
+describe("Turn it on and change channel", function(){
     var myTv = null;
     
     beforeEach(function() {
@@ -27,18 +27,41 @@ describe("Test tv.js", function(){
     });
 });
 
-describe("Another test tv.js", function(){
+describe("Test the tv switch", function(){
     var myTv = null;
-    
+
     beforeEach(function() {
         myTv = Tv();
     });
-    
+
     it("turn it off", function(){
         expect(myTv.isOn()).toEqual(false);
         expect(myTv.turnOff()).toEqual(false);
         expect(myTv.isOn()).toEqual(false);
         expect(myTv.turnOn()).toEqual(true);
         expect(myTv.isOn()).toEqual(true);
+    });
+});
+
+describe("Test the volume while off and while on", function(){
+    var myTv = null;
+
+    beforeEach(function() {
+        myTv = Tv();
+    });
+
+    it("try changing the volume while off", function(){
+        expect(myTv.setVolume(100)).toEqual(false);
+    });
+
+    it("check volume while off", function(){
+        expect(myTv.volume()).toEqual(false);
+    });
+
+    it("turn the tv on, than change the volume", function(){
+        expect(myTv.turnOn()).toEqual(true);
+        expect(myTv.volume()).toEqual(50);
+        expect(myTv.setVolume(100)).toEqual(true);
+        expect(myTv.volume()).toEqual(100);
     });
 });
