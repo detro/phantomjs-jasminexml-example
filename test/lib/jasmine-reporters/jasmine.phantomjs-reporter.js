@@ -43,7 +43,8 @@
      *                  "Class init"); default: true
      */
     var PhantomJSReporter =  function(consolidate, useDotNotation) {
-        this.testFinishedContainerId = "testFinished";
+        this.testsPassedContainerId = "testsPassed";
+        this.testsFailedContainerId = "testsFailed";
         this.suiteResultContainerClass = "suiteResult";
         this.suiteResultXmlBodyContainerClass = "xmlbody";
         this.suiteResultFilenameContainerClass = "filename";
@@ -104,6 +105,7 @@
             var failedCount = 0;
 
             suite.status = results.passed() ? 'Passed.' : 'Failed.';
+            suite.statusPassed = results.passed();
             if (results.totalCount === 0) { // todo: change this to check results.skipped
                 suite.status = 'Skipped.';
             }
@@ -127,12 +129,15 @@
 
         reportRunnerResults: function(runner) {
             this.log("Runner Finished.");
-            var suites = runner.suites();
+            var suites = runner.suites(),
+                passed = true;
             for (var i = 0; i < suites.length; i++) {
                 var suite = suites[i],
                     filename = 'TEST-' + this.getFullName(suite, true) + '.xml',
                     output = '<?xml version="1.0" encoding="UTF-8" ?>';
                     
+                passed = !suite.statusPassed ? false : passed;
+
                 // if we are consolidating, only write out top-level suites
                 if (this.consolidate && suite.parentSuite) {
                     continue;
@@ -148,7 +153,7 @@
                     this.createSuiteResultContainer(filename, output);
                 }
             }
-            this.createTestFinishedContainer();
+            this.createTestFinishedContainer(passed);
         },
 
         getNestedOutput: function(suite) {
@@ -177,9 +182,9 @@
             document.body.appendChild(suiteResultContainer);
         },
         
-        createTestFinishedContainer: function() {
+        createTestFinishedContainer: function(passed) {
             var testFinishedContainer = document.createElement("div");
-            testFinishedContainer.id = this.testFinishedContainerId;
+            testFinishedContainer.id = passed ? this.testsPassedContainerId : this.testsFailedContainerId; // append "testFinished" or "testFailed"
             testFinishedContainer.style.display = "none";
             document.body.appendChild(testFinishedContainer);
         },
