@@ -1,3 +1,6 @@
+
+phantom.injectJs("lib/utils/core.js")
+
 if ( phantom.args.length !== 2 ) {
     console.log("Usage: phantom_test_runner.js HTML_RUNNER RESULT_DIR");
     phantom.exit();
@@ -13,7 +16,7 @@ if ( phantom.args.length !== 2 ) {
 
     page.open(htmlrunner, function(status) {
         if (status === "success") {
-            waitFor(function() { // wait for this to be true
+            utils.core.waitfor(function() { // wait for this to be true
                 return page.evaluate(function() {
                     return document.getElementById("testsPassed") !== null ? true : document.getElementById("testsFailed") !== null ? true : false;
                 });

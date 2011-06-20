@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.betfair.fed</groupId>
+    <groupId>me.ivandemarino</groupId>
     <artifactId>example</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>example</name>
@@ -25,7 +25,7 @@
                     <executable>phantomjs</executable>
                     <workingDirectory>test</workingDirectory>
                     <arguments>
-                        <argument>phantomjs_test_runner.js</argument>
+                        <argument>phantomjs_jasminexml_runner.js</argument>
                         <argument>test_runner.html</argument>
                         <argument>${project.build.directory}/surefire-reports</argument>
                     </arguments>
