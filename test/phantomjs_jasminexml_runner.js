@@ -37,8 +37,13 @@ if ( phantom.args.length !== 2 ) {
                 });
                 
                 // Save the result of the tests in files
+                var f = null;
                 for ( var i = 0, len = suitesResults.length; i < len; ++i ) {
-                    phantom.writeToFile(resultdir + '/' + suitesResults[i].filename, suitesResults[i].xmlbody);
+                    f = phantom.fs.open(resultdir + '/' + suitesResults[i].filename, "w");
+                    if ( f ) {
+                        f.write(suitesResults[i].xmlbody);
+                        f.close();
+                    }
                 }
                 
                 // Return the correct exit status. '0' only if all the tests passed
