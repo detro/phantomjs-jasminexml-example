@@ -10,3 +10,4 @@ qrc_*
 *.o
 *.swp
 *.pyc
+target
