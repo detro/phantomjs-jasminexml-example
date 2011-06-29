@@ -39,10 +39,13 @@ if ( phantom.args.length !== 2 ) {
                 // Save the result of the tests in files
                 var f = null;
                 for ( var i = 0, len = suitesResults.length; i < len; ++i ) {
-                    f = phantom.fs.open(resultdir + '/' + suitesResults[i].filename, "w");
-                    if ( f ) {
+                    try {
+                        f = fs.open(resultdir + '/' + suitesResults[i].filename, "w");
                         f.write(suitesResults[i].xmlbody);
                         f.close();
+                    } catch (e) {
+                        console.log(e);
+                        console.log("phantomjs> Unable to save result of Suite '"+ suitesResults[i].filename +"'");
                     }
                 }
                 

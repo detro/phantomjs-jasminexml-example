@@ -5,9 +5,6 @@ This is an example project layout, that realises JavaScript Unit Testing
 using [Jasmine](https://github.com/pivotal/jasmine) on the top of
 [PhantomJS](https://github.com/ariya/phantomjs).
 
-**IMPORTANT** - At the moment it works only with my [utilities branch](https://github.com/detro/phantomjs/tree/utilities)
-of PhantomJS, as the API for File I/O it uses, are not yet part of the _upstream_.
-
 It is designed to be used _standalone_ or _within Maven_.
 
 ## Use Standalone
@@ -50,11 +47,5 @@ tests at the bottom of the webpage where the test runs.
 `phantomjs_jasminexml_runner.js` instead runs the show, launches the tests,
 extracts the result from the page, then saves it to the directory passed (see source).
 
-## Work in progress!!!
-Bear in mind, this is a work in progress for now, and uses
-[a branch of PhantomJS not _yet_ upstream](https://github.com/detro/phantomjs/tree/utilities).
-I'll change the API to do File I/O in PhantomJS, and once that goes to to upstream, I'll update this
-to use the final API.
-
-**Happy Testing**
+**Happy Testing ;-)**
 
