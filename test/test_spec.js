@@ -1,4 +1,4 @@
-describe("Turn it on and change channel", function(){
+describe("Test TV Switch and Channels", function(){
     var myTv = null;
     
     beforeEach(function() {
@@ -27,7 +27,7 @@ describe("Turn it on and change channel", function(){
     });
 });
 
-describe("Test the tv switch", function(){
+describe("Test TV Switch", function(){
     var myTv = null;
 
     beforeEach(function() {
@@ -43,7 +43,7 @@ describe("Test the tv switch", function(){
     });
 });
 
-describe("Test the volume while off and while on", function(){
+describe("Test TV Volume", function(){
     var myTv = null;
 
     beforeEach(function() {
