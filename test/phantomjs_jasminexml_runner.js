@@ -11,7 +11,7 @@ if ( phantom.args.length !== 2 ) {
     
     // Echo the output of the tests to the Standard Output
     page.onConsoleMessage = function(msg, source, linenumber) {
-        console.log("jasmine> " + msg);
+        console.log(msg);
     };
 
     page.open(htmlrunner, function(status) {
