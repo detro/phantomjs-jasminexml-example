@@ -35,7 +35,7 @@ if ( phantom.args.length !== 2 ) {
                         f.close();
                     } catch (e) {
                         console.log(e);
-                        console.log("phantomjs> Unable to save result of Suite '"+ suitesResults[i].filename +"'");
+                        console.log("phantomjs> Unable to save result of Suite '"+ suitesResults[i]["xmlfilename"] +"'");
                     }
                 }
                 
