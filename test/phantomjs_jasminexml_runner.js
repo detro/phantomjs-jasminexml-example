@@ -18,12 +18,12 @@ if ( phantom.args.length !== 2 ) {
         if (status === "success") {
             utils.core.waitfor(function() { // wait for this to be true
                 return page.evaluate(function() {
-                    return typeof(jasmine.phantomXMLReporterPassed) !== "undefined";
+                    return typeof(jasmine.phantomjsXMLReporterPassed) !== "undefined";
                 });
             }, function() { // once done...
                 // Retrieve the result of the tests
                 var suitesResults = page.evaluate(function(){
-                    return jasmine.phantomXMLReporterResults;
+                    return jasmine.phantomjsXMLReporterResults;
                 });
                 
                 // Save the result of the tests in files
@@ -41,7 +41,7 @@ if ( phantom.args.length !== 2 ) {
                 
                 // Return the correct exit status. '0' only if all the tests passed
                 phantom.exit(page.evaluate(function(){
-                    return jasmine.phantomXMLReporterPassed ? 0 : 1; //< exit(0) is success, exit(1) is failure
+                    return jasmine.phantomjsXMLReporterPassed ? 0 : 1; //< exit(0) is success, exit(1) is failure
                 }));
             }, function() { // or, once it timesout...
                 phantom.exit(1);

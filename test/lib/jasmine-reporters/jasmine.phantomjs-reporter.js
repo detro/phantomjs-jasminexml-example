@@ -160,15 +160,15 @@
         },
 
         createSuiteResultContainer: function(filename, xmloutput) {
-            jasmine.phantomXMLReporterResults = jasmine.phantomXMLReporterResults || [];
-            jasmine.phantomXMLReporterResults.push({
+            jasmine.phantomjsXMLReporterResults = jasmine.phantomjsXMLReporterResults || [];
+            jasmine.phantomjsXMLReporterResults.push({
                 "xmlfilename" : filename,
                 "xmlbody" : xmloutput
             });
         },
         
         createTestFinishedContainer: function(passed) {
-            jasmine.phantomXMLReporterPassed = passed
+            jasmine.phantomjsXMLReporterPassed = passed
         },
 
         getFullName: function(suite, isFilename) {
