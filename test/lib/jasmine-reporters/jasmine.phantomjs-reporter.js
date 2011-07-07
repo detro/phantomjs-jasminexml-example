@@ -43,11 +43,6 @@
      *                  "Class init"); default: true
      */
     var PhantomJSReporter =  function(consolidate, useDotNotation) {
-        this.testsPassedContainerId = "testsPassed";
-        this.testsFailedContainerId = "testsFailed";
-        this.suiteResultContainerClass = "suiteResult";
-        this.suiteResultXmlBodyContainerClass = "xmlbody";
-        this.suiteResultFilenameContainerClass = "filename";
         this.consolidate = consolidate === jasmine.undefined ? true : consolidate;
         this.useDotNotation = useDotNotation === jasmine.undefined ? true : useDotNotation;
     };  
@@ -164,29 +159,16 @@
             return output;
         },
 
-        createSuiteResultContainer: function(filename, xmloutput) {            
-            var suiteResultContainer = document.createElement("div"),
-                filenameContainer = document.createElement("div"),
-                xmlbodyContainer = document.createElement("div");
-            suiteResultContainer.className = this.suiteResultContainerClass;
-            suiteResultContainer.style.display = "none";
-            suiteResultContainer.appendChild(filenameContainer);
-            suiteResultContainer.appendChild(xmlbodyContainer);
-            
-            xmlbodyContainer.textContent = xmloutput;
-            xmlbodyContainer.className = this.suiteResultXmlBodyContainerClass;
-            
-            filenameContainer.textContent = filename;
-            filenameContainer.className = this.suiteResultFilenameContainerClass;
-            
-            document.body.appendChild(suiteResultContainer);
+        createSuiteResultContainer: function(filename, xmloutput) {
+            jasmine.phantomXMLReporterResults = jasmine.phantomXMLReporterResults || [];
+            jasmine.phantomXMLReporterResults.push({
+                "xmlfilename" : filename,
+                "xmlbody" : xmloutput
+            });
         },
         
         createTestFinishedContainer: function(passed) {
-            var testFinishedContainer = document.createElement("div");
-            testFinishedContainer.id = passed ? this.testsPassedContainerId : this.testsFailedContainerId; // append "testFinished" or "testFailed"
-            testFinishedContainer.style.display = "none";
-            document.body.appendChild(testFinishedContainer);
+            jasmine.phantomXMLReporterPassed = passed
         },
 
         getFullName: function(suite, isFilename) {

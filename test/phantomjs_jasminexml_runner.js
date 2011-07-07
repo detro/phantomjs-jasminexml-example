@@ -18,30 +18,20 @@ if ( phantom.args.length !== 2 ) {
         if (status === "success") {
             utils.core.waitfor(function() { // wait for this to be true
                 return page.evaluate(function() {
-                    return document.getElementById("testsPassed") !== null ? true : document.getElementById("testsFailed") !== null ? true : false;
+                    return typeof(jasmine.phantomXMLReporterPassed) !== "undefined";
                 });
             }, function() { // once done...
                 // Retrieve the result of the tests
                 var suitesResults = page.evaluate(function(){
-                    var jsonResults = [],
-                        results = document.querySelectorAll(".suiteResult");
-                        
-                    for ( var i = 0, len = results.length; i < len; ++i ) {
-                        jsonResults.push({
-                            "filename" : results[i].getElementsByClassName("filename")[0].textContent,
-                            "xmlbody" : results[i].getElementsByClassName("xmlbody")[0].textContent
-                        });
-                    }
-                    
-                    return jsonResults;
+                    return jasmine.phantomXMLReporterResults;
                 });
                 
                 // Save the result of the tests in files
                 var f = null;
                 for ( var i = 0, len = suitesResults.length; i < len; ++i ) {
                     try {
-                        f = fs.open(resultdir + '/' + suitesResults[i].filename, "w");
-                        f.write(suitesResults[i].xmlbody);
+                        f = fs.open(resultdir + '/' + suitesResults[i]["xmlfilename"], "w");
+                        f.write(suitesResults[i]["xmlbody"]);
                         f.close();
                     } catch (e) {
                         console.log(e);
@@ -51,7 +41,7 @@ if ( phantom.args.length !== 2 ) {
                 
                 // Return the correct exit status. '0' only if all the tests passed
                 phantom.exit(page.evaluate(function(){
-                    return document.getElementById("testsPassed") !== null ? 0 : 1; //< exit(0) is success, exit(1) is failure
+                    return jasmine.phantomXMLReporterPassed ? 0 : 1; //< exit(0) is success, exit(1) is failure
                 }));
             }, function() { // or, once it timesout...
                 phantom.exit(1);
