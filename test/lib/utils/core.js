@@ -23,7 +23,7 @@ utils.core.waitfor = function(check, onTestPass, onTimeout, timeoutMs, freqMs) {
         condition = false,
         timer = setTimeout(function() {
             var elapsedMs = Date.now() - start;
-            if ((elapsedMs - start < timeoutMs) && !condition) {
+            if ((elapsedMs < timeoutMs) && !condition) {
                 // If not time-out yet and condition not yet fulfilled
                 condition = check(elapsedMs);
                 timer = setTimeout(arguments.callee, freqMs);
