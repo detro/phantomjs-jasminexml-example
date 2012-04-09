@@ -7,6 +7,8 @@ using [Jasmine](https://github.com/pivotal/jasmine) on the top of
 
 It is designed to be used _standalone_ or _within Maven_.
 
+Should work properly with **PhantomJS version `>=1.4`**.
+
 ## Use Standalone
 
     $ phantomjs test/phantomjs_jasminexml_runner.js test/test_runner.html xml_output_dir/
