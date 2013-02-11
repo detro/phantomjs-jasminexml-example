@@ -1,0 +1,29 @@
+{
+    "name": "detro/phantomjs-jasminexml-example",
+    "description": "A phantomjs / jasminexml Javascript Testing example",
+    "type": "library",
+    "keywords": [
+        "javascript",
+        "jasmine",
+        "phantomjs",
+        "testing"
+    ],
+    "homepage": "https://github.com/detro/phantomjs-jasminexml-example#readme",
+    "authors": [
+        {
+            "name": "Ivan De Marino",
+            "email": "ivan.de.marino@gmail.com",
+            "role": "lead"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/detro/phantomjs-jasminexml-example/issues"
+    },
+    "bin": [
+        "test/phantomjs_jasminexml_runner.js"
+    ],
+    "config": {
+        "bin-dir": "bin"
+    }
+}
+
