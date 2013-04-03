@@ -51,3 +51,12 @@ extracts the result from the page, then saves it to the directory passed (see so
 
 **Happy Testing ;-)**
 
+## Licensing: Public Domain
+
+The code of this project is relased under [Public Domain](http://en.wikipedia.org/wiki/Public_domain) and as such you
+are not required to do anything but use and enjoy it.
+
+If, out of good will, want to put somewhere in your work a reference to this project as "inspiration", please feel free.
+But don't feel any obligation to do so.
+
+
