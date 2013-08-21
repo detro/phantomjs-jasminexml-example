@@ -1,3 +1,15 @@
+- - -
+# **WARNING - WARNING - WARNING**
+When I wrote this the intention was to release an example of integration between PhantomJS, Maven and Jasmine.
+I had no desire to maintain another project, and I find it surprising how many refer to this as one.
+
+Use this as inspiration, and then take off your way.
+I have closed the Issue Tracker.
+
+_P.S.: Yes, I should have probably released this as a Gist instead..._
+
+- - -
+
 # PhantomJS - Jasmine XML - Example Project Layout
 
 ## Description
