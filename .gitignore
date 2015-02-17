@@ -11,3 +11,6 @@ qrc_*
 *.swp
 *.pyc
 target
+.classpath
+.project
+.settings
