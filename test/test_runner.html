@@ -2,9 +2,12 @@
 <html>
 <head>
   <title>Jasmine Test Runner</title>
-  <link rel="stylesheet" type="text/css" href="lib/jasmine-1.0.2/jasmine.css">
-  <script type="text/javascript" src="lib/jasmine-1.0.2/jasmine.js"></script>
-  <script type="text/javascript" src="lib/jasmine-1.0.2/jasmine-html.js"></script>
+  <link rel="shortcut icon" type="image/png" href="lib/jasmine-2.2.0/jasmine_favicon.png">
+  <link rel="stylesheet" type="text/css" href="lib/jasmine-2.2.0/jasmine.css">
+  <script type="text/javascript" src="lib/jasmine-2.2.0/jasmine.js"></script>
+  <script type="text/javascript" src="lib/jasmine-2.2.0/jasmine-html.js"></script>
+  <script type="text/javascript" src="lib/jasmine-2.2.0/boot.js"></script>
+
   <script type="text/javascript" src="lib/jasmine-reporters/jasmine.phantomjs-reporter.js"></script>
 
   <!-- include source files here... -->
@@ -17,9 +20,7 @@
 <body>
 
 <script type="text/javascript">
-  jasmine.getEnv().addReporter(new jasmine.TrivialReporter());
   jasmine.getEnv().addReporter(new jasmine.PhantomJSReporter());
-  jasmine.getEnv().execute();
 </script>
 
 </body>

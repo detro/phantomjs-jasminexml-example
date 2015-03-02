@@ -19,7 +19,7 @@ using [Jasmine](https://github.com/pivotal/jasmine) on the top of
 
 It is designed to be used _standalone_ or _within Maven_.
 
-Should work properly with **PhantomJS version `>=1.4`**.
+Should work properly with **PhantomJS version `>=2.2.0`**.
 
 ## Use Standalone
 

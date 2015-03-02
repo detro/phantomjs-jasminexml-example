@@ -5,12 +5,14 @@ var htmlrunner,
 
 phantom.injectJs("lib/utils/core.js")
 
-if ( phantom.args.length !== 2 ) {
+var system = require('system');
+
+if ( system.args.length !== 3 ) {
     console.log("Usage: phantom_test_runner.js HTML_RUNNER RESULT_DIR");
     phantom.exit();
 } else {
-    htmlrunner = phantom.args[0];
-    resultdir = phantom.args[1];
+    htmlrunner = system.args[1];
+    resultdir = system.args[2];
     page = require("webpage").create();
     fs = require("fs");
     
@@ -49,6 +51,7 @@ if ( phantom.args.length !== 2 ) {
                     return jasmine.phantomjsXMLReporterPassed ? 0 : 1; //< exit(0) is success, exit(1) is failure
                 }));
             }, function() { // or, once it timesout...
+                console.log("phantomjs> timeout");
                 phantom.exit(1);
             });
         } else {
